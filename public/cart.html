@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Store | Carrinho</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>MODA<span>Elegante</span></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Produtos</a></li>
+          <li><a href="/cart" class="active cart-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="cart-section">
+    <div class="container">
+      <h1>Seu Carrinho</h1>
+      
+      <div class="cart-container">
+        <div id="cart-items">
+          <!-- Cart items will be loaded here from JS -->
+        </div>
+        
+        <div class="cart-summary">
+          <h2>Resumo do Pedido</h2>
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="cart-subtotal">R$ 0,00</span>
+          </div>
+          <div class="summary-row">
+            <span>Frete:</span>
+            <span id="cart-shipping">R$ 0,00</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="cart-total">R$ 0,00</span>
+          </div>
+          
+          <div id="customer-info">
+            <h3>Informações para Entrega</h3>
+            <form id="checkout-form">
+              <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                <label for="address">Endereço Completo</label>
+                <textarea id="address" name="address" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="payment">Forma de Pagamento</label>
+                <select id="payment" name="payment" required>
+                  <option value="">Selecione uma opção</option>
+                  <option value="credit">Cartão de Crédito</option>
+                  <option value="debit">Cartão de Débito</option>
+                  <option value="pix">PIX</option>
+                  <option value="bank">Transferência Bancária</option>
+                </select>
+              </div>
+              <button type="submit" id="checkout-btn" class="btn">Finalizar Compra</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div id="empty-cart" class="empty-cart hidden">
+        <i class="fas fa-shopping-cart"></i>
+        <h2>Seu carrinho está vazio</h2>
+        <p>Adicione produtos para continuar com suas compras.</p>
+        <a href="/products" class="btn">Ver Produtos</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="order-confirmation" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h2>Pedido Realizado com Sucesso!</h2>
+      <p>Obrigado por sua compra! Seu pedido foi recebido e está sendo processado.</p>
+      <p>Uma notificação foi enviada para o vendedor via WhatsApp.</p>
+      <p>Em breve você receberá uma confirmação por email.</p>
+      <a href="/" class="btn">Continuar Comprando</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>MODA<span>Elegante</span></h3>
+          <p>Sua loja de moda completa com as últimas tendências e estilos.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Links Rápidos</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Produtos</a></li>
+            <li><a href="/cart">Carrinho</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contato</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Rua da Moda, 123</p>
+          <p><i class="fas fa-phone"></i> (11) 91234-5678</p>
+          <p><i class="fas fa-envelope"></i> contato@modaelegante.com</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2023 MODAElegante. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

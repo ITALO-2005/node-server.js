@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Store | Produtos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>MODA<span>Elegante</span></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/products" class="active">Produtos</a></li>
+          <li><a href="/cart" class="cart-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="products-header">
+    <div class="container">
+      <h1>Nossa Coleção</h1>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="container">
+      <div class="filters">
+        <div class="filter-group">
+          <h3>Categorias</h3>
+          <div class="filter-options">
+            <label><input type="radio" name="category" value="all" checked> Todos</label>
+            <label><input type="radio" name="category" value="feminino"> Feminino</label>
+            <label><input type="radio" name="category" value="masculino"> Masculino</label>
+            <label><input type="radio" name="category" value="acessorios"> Acessórios</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3>Preço</h3>
+          <div class="filter-options">
+            <label><input type="radio" name="price" value="all" checked> Todos</label>
+            <label><input type="radio" name="price" value="low"> Até R$ 50</label>
+            <label><input type="radio" name="price" value="medium"> R$ 50 - R$ 100</label>
+            <label><input type="radio" name="price" value="high"> Acima de R$ 100</label>
+          </div>
+        </div>
+      </div>
+      <div class="products-grid" id="products-container">
+        <!-- Products will be loaded from JS -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>MODA<span>Elegante</span></h3>
+          <p>Sua loja de moda completa com as últimas tendências e estilos.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Links Rápidos</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Produtos</a></li>
+            <li><a href="/cart">Carrinho</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contato</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Rua da Moda, 123</p>
+          <p><i class="fas fa-phone"></i> (11) 91234-5678</p>
+          <p><i class="fas fa-envelope"></i> contato@modaelegante.com</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2023 MODAElegante. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <div id="notification" class="notification">
+    <p>Produto adicionado ao carrinho!</p>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Store | Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>MODA<span>Elegante</span></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/products">Produtos</a></li>
+          <li><a href="/cart" class="cart-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Nova Coleção Verão</h2>
+        <p>Descubra o melhor da moda com estilo e conforto para todas as ocasiões.</p>
+        <a href="/products" class="btn">Ver Produtos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="container">
+      <h2 class="section-title">Produtos em Destaque</h2>
+      <div class="featured-grid" id="featured-products">
+        <!-- Products will be loaded from JS -->
+      </div>
+    </div>
+  </section>
+
+  <section class="categories">
+    <div class="container">
+      <h2 class="section-title">Categorias</h2>
+      <div class="category-grid">
+        <div class="category">
+          <img src="images/category-women.jpg" alt="Moda Feminina">
+          <h3>Feminina</h3>
+        </div>
+        <div class="category">
+          <img src="images/category-men.jpg" alt="Moda Masculina">
+          <h3>Masculina</h3>
+        </div>
+        <div class="category">
+          <img src="images/category-accessories.jpg" alt="Acessórios">
+          <h3>Acessórios</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>MODA<span>Elegante</span></h3>
+          <p>Sua loja de moda completa com as últimas tendências e estilos.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Links Rápidos</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/public/products.html">Produtos</a></li>
+            <li><a href="/cart">Carrinho</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contato</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Rua Luiz Lucas Evangelista, 05</p>
+          <p><i class="fas fa-phone"></i> (83) 98669-6637</p>
+          <p><i class="fas fa-envelope"></i> italoclashroyal131@gmail.com</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 MODAElegante. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

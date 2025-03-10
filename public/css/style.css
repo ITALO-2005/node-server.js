@@ -765,3 +765,17 @@ footer {
     width: 100%;
   }
 }
+#search-button {
+  background-color: #ff4e50;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+  background-color: #e63e40;
+}

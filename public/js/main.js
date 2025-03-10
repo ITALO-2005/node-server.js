@@ -1,19 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Load featured products on the home page
+  // Certifique-se de que a variável 'products' está definida corretamente
+  if (!Array.isArray(products)) {
+    console.error("A variável 'products' não está definida corretamente.");
+    return;
+  }
+
+  // Exibe os produtos em destaque
   const featuredProductsContainer = document.getElementById('featured-products');
   
   if (featuredProductsContainer) {
-    // Filter featured products
     const featuredProducts = products.filter(product => product.featured);
     
-    // Display featured products
     featuredProducts.forEach(product => {
       const productCard = createProductCard(product);
       featuredProductsContainer.appendChild(productCard);
     });
   }
   
-  // Handle category clicks
+  // Filtros de categorias
   const categories = document.querySelectorAll('.category');
   categories.forEach(category => {
     category.addEventListener('click', () => {
@@ -22,27 +26,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Button search functionality
+  // Função de busca
   const searchInput = document.getElementById('search-input');
   const searchBtn = document.getElementById('search-btn');
 
   if (searchBtn && searchInput) {
     searchBtn.addEventListener('click', () => {
       const searchTerm = searchInput.value.toLowerCase();
-      console.log('Termo de busca:', searchTerm); // Depuração
+      console.log('Buscando por:', searchTerm);  // Verifica se o termo de busca está correto
       filterProducts(searchTerm);
     });
 
     searchInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         const searchTerm = searchInput.value.toLowerCase();
-        console.log('Termo de busca (Enter):', searchTerm); // Depuração
+        console.log('Buscando por (Enter):', searchTerm);  // Verifica se o termo de busca está correto
         filterProducts(searchTerm);
       }
     });
   }
 
-  // Filter products based on search term
+  // Filtra os produtos com base no termo de busca
   function filterProducts(searchTerm) {
     const filteredProducts = products.filter(product => 
       product.name.toLowerCase().includes(searchTerm) ||
@@ -50,30 +54,30 @@ document.addEventListener('DOMContentLoaded', () => {
       product.category.toLowerCase().includes(searchTerm)
     );
 
-    console.log('Produtos filtrados:', filteredProducts); // Depuração
+    console.log('Produtos filtrados:', filteredProducts);  // Verifica os produtos filtrados
 
     displayProducts(filteredProducts);
   }
 
-  // Display products on the page
-  function displayProducts(products) {
+  // Exibe os produtos na página
+  function displayProducts(filteredProducts) {
     const productsContainer = document.getElementById('products-container');
     if (productsContainer) {
-      productsContainer.innerHTML = ''; // Clear previous results
-      if (products.length > 0) {
-        products.forEach(product => {
+      productsContainer.innerHTML = '';  // Limpa os resultados anteriores
+      if (filteredProducts.length > 0) {
+        filteredProducts.forEach(product => {
           const productCard = createProductCard(product);
           productsContainer.appendChild(productCard);
         });
       } else {
-        // If no products found, show a message
+        // Caso não haja produtos, exibe uma mensagem
         productsContainer.innerHTML = '<p>Nenhum produto encontrado.</p>';
       }
     }
   }
 });
 
-// Create a product card element
+// Cria o cartão do produto
 function createProductCard(product) {
   const card = document.createElement('div');
   card.className = 'product-card';
@@ -92,7 +96,7 @@ function createProductCard(product) {
     </div>
   `;
   
-  // Add event listener to the add to cart button
+  // Adiciona o evento de clique para adicionar ao carrinho
   const addToCartBtn = card.querySelector('.add-to-cart');
   addToCartBtn.addEventListener('click', () => {
     addToCart(product);
@@ -102,7 +106,7 @@ function createProductCard(product) {
   return card;
 }
 
-// Convert category code to display name
+// Converte o código da categoria para o nome legível
 function getCategoryName(category) {
   switch(category) {
     case 'feminino': return 'Moda Feminina';
@@ -112,18 +116,15 @@ function getCategoryName(category) {
   }
 }
 
-// Add a product to the cart
+// Adiciona um produto ao carrinho
 function addToCart(product) {
   const cart = getCart();
   
-  // Check if the product is already in the cart
   const existingItemIndex = cart.findIndex(item => item.id === product.id);
   
   if (existingItemIndex !== -1) {
-    // If the product is already in the cart, increase the quantity
     cart[existingItemIndex].quantity += 1;
   } else {
-    // If the product is not in the cart, add it with quantity 1
     cart.push({
       id: product.id,
       name: product.name,
@@ -133,11 +134,10 @@ function addToCart(product) {
     });
   }
   
-  // Save the updated cart to localStorage
   saveCart(cart);
 }
 
-// Show notification
+// Exibe uma notificação de sucesso
 function showNotification(message) {
   const notification = document.getElementById('notification');
   
@@ -145,7 +145,6 @@ function showNotification(message) {
     notification.textContent = message;
     notification.classList.add('show');
     
-    // Hide notification after 3 seconds
     setTimeout(() => {
       notification.classList.remove('show');
     }, 3000);

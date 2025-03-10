@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const productsContainer = document.getElementById('products-container');
     const categoryFilters = document.querySelectorAll('input[name="category"]');
     const priceFilters = document.querySelectorAll('input[name="price"]');
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
 
     // Carrega os produtos ao carregar a página
     loadProducts();
@@ -9,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adiciona listeners para os filtros de categoria
     categoryFilters.forEach(filter => {
         filter.addEventListener('change', () => {
+            console.log('Filtro de categoria alterado');
             loadProducts();
         });
     });
@@ -16,15 +19,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adiciona listeners para os filtros de preço
     priceFilters.forEach(filter => {
         filter.addEventListener('change', () => {
+            console.log('Filtro de preço alterado');
             loadProducts();
         });
     });
 
-    function loadProducts() {
-        const selectedCategory = document.querySelector('input[name="category"]:checked').value;
-        const selectedPrice = document.querySelector('input[name="price"]:checked').value;
+    // Evento de pesquisa no campo de input
+    searchInput.addEventListener('input', () => {
+        loadProducts();
+    });
 
-        // Filtra os produtos com base na categoria e no preço selecionados
+    // Evento de pesquisa ao clicar no botão
+    searchButton.addEventListener('click', () => {
+        loadProducts();
+    });
+
+    function loadProducts() {
+        const selectedCategory = document.querySelector('input[name="category"]:checked')?.value || 'all';
+        const selectedPrice = document.querySelector('input[name="price"]:checked')?.value || 'all';
+        const searchQuery = searchInput.value.toLowerCase().trim();
+
+        // Verifique os filtros
+        console.log(`Categoria selecionada: ${selectedCategory}`);
+        console.log(`Faixa de preço selecionada: ${selectedPrice}`);
+        console.log(`Pesquisa por: ${searchQuery}`);
+
+        // Filtra os produtos com base na categoria, preço e pesquisa
         const filteredProducts = products.filter(product => {
             const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
             const matchesPrice = selectedPrice === 'all' || (
@@ -32,8 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 (selectedPrice === 'medium' && product.price > 50 && product.price <= 100) ||
                 (selectedPrice === 'high' && product.price > 100)
             );
-            return matchesCategory && matchesPrice;
+            const matchesSearchQuery = searchQuery === '' || product.name.toLowerCase().includes(searchQuery);
+            return matchesCategory && matchesPrice && matchesSearchQuery;
         });
+
+        // Log para verificar os produtos filtrados
+        console.log('Produtos filtrados:', filteredProducts);
 
         // Exibe os produtos filtrados
         displayProducts(filteredProducts);
@@ -41,10 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayProducts(products) {
         productsContainer.innerHTML = '';
-        products.forEach(product => {
-            const productCard = createProductCard(product);
-            productsContainer.appendChild(productCard);
-        });
+        if (products.length > 0) {
+            products.forEach(product => {
+                const productCard = createProductCard(product);
+                productsContainer.appendChild(productCard);
+            });
+        } else {
+            productsContainer.innerHTML = '<p>Nenhum produto encontrado.</p>';
+        }
     }
 
     function createProductCard(product) {
